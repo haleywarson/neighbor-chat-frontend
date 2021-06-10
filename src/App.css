@@ -54,12 +54,15 @@ light green #7DA37E;
   color: white;
   background: #c95254;
   border: none;
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
 }
 
 .login-form h2,
 .signup-form h2 {
-  color: white;
+  color: #c95254;
   padding: 0;
+  font-size: 1.5rem;
   font-family: "Playfair Display", serif;
 }
 

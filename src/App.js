@@ -5,85 +5,94 @@ import { Navbar, Nav } from "react-bootstrap";
 import "./App.css";
 
 import Home from "./Pages/Home";
-import Profile from "./Pages/Profile";
+// import Profile from "./Pages/Profile";
 
-const baseUrl = "";
+const baseUrl = "http://localhost:9000/";
 
 function App() {
   // STATE
-  const [user, setUser] = useState({});
-  const [error, setError] = useState("");
+  const [users, setUsers] = useState([]);
+  // const [user, setUser] = useState({});
+  // const [error, setError] = useState("");
 
-  // SIGNUP AND LOGIN/OUT
-  const signup = (user) => {
-    fetch(baseUrl + "users", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username: user.username,
-          password: user.password,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => setUser({ user }));
+  fetch(baseUrl + "users")
+    .then((response) => response.json())
+    .then((users) => setUsers(users));
+
+  const displayUsers = () => {
+    return users.map((user) => <li>{user.username}</li>);
   };
 
-  const login = (username, password) => {
-    fetch(baseUrl + "login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username,
-          password,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.token) {
-          localStorage.setItem("token", result.token);
-          setUser(result.user);
-        } else {
-          setError(result.error);
-        }
-      });
-  };
+  // // SIGNUP AND LOGIN/OUT
+  // const signup = (user) => {
+  //   fetch(baseUrl + "users", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       user: {
+  //         username: user.username,
+  //         // password: user.password,
+  //       },
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((user) => setUser({ user }));
+  // };
 
-  const validateUser = () => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      fetch(baseUrl + "profile", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.id) {
-            setUser(result);
-          }
-        });
-    }
-  };
+  // const login = (username, password) => {
+  //   fetch(baseUrl + "login", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       user: {
+  //         username,
+  //         // password,
+  //       },
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       if (result.token) {
+  //         localStorage.setItem("token", result.token);
+  //         setUser(result.user);
+  //       } else {
+  //         setError(result.error);
+  //       }
+  //     });
+  // };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser({});
-  };
+  // const validateUser = () => {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     fetch(baseUrl + "profile", {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((result) => {
+  //         if (result.id) {
+  //           setUser(result);
+  //         }
+  //       });
+  //   }
+  // };
 
-  useEffect(() => {
-    validateUser();
-  }, []);
+  // const logout = () => {
+  //   localStorage.removeItem("token");
+  //   setUser({});
+  // };
+
+  // useEffect(() => {
+  //   validateUser();
+  // }, []);
 
   return (
     <div className="App">
@@ -98,7 +107,11 @@ function App() {
               <Nav.Link id="nav-link" href="/profile">
                 Profile
               </Nav.Link>
-              <Nav.Link id="nav-link" href="/" onClick={logout}>
+              <Nav.Link
+                id="nav-link"
+                href="/"
+                // onClick={logout}
+              >
                 Logout
               </Nav.Link>
             </Nav>
@@ -107,9 +120,15 @@ function App() {
 
         <main>
           <Switch>
-            <Route path="/profile">{user.username ? <Profile /> : null}</Route>
+            {/* <Route path="/profile">{user.username ? <Profile /> : null}</Route> */}
             <Route path="/">
-              <Home user={user} signup={signup} login={login} />
+              <h2>Users</h2>
+              {displayUsers()}
+              <Home
+              // user={user}
+              // signup={signup}
+              // login={login}
+              />
             </Route>
           </Switch>
         </main>
@@ -122,7 +141,3 @@ function App() {
 }
 
 export default App;
-
-// const displayUsers = () => {
-//   return users.map((user) => <li>{user.username}</li>);
-// };
