@@ -5,9 +5,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "./App.css";
 
 import Home from "./Pages/Home";
-import Login from "./Pages/Login";
 import Profile from "./Pages/Profile";
-import Signup from "./Pages/Signup";
 
 const baseUrl = "";
 
@@ -17,7 +15,7 @@ function App() {
   const [error, setError] = useState("");
 
   // SIGNUP AND LOGIN/OUT
-  const signUp = (user) => {
+  const signup = (user) => {
     fetch(baseUrl + "users", {
       method: "POST",
       headers: {
@@ -111,18 +109,7 @@ function App() {
           <Switch>
             <Route path="/profile">{user.username ? <Profile /> : null}</Route>
             <Route path="/">
-              <div className="main-container">
-                {user.username ? (
-                  <>
-                    <Home />
-                  </>
-                ) : (
-                  <>
-                    <Signup />
-                    <Login login={login} error={error} />
-                  </>
-                )}
-              </div>
+              <Home user={user} signup={signup} login={login} />
             </Route>
           </Switch>
         </main>

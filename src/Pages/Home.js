@@ -1,6 +1,20 @@
 import React from "react";
 import "../App.css";
 
-export default function Home() {
-  return <div className="homeContainer">home, welcome page</div>;
+import LoginForm from "../Components/LoginForm";
+import SignupForm from "../Components/SignupForm";
+
+export default function Home({ user, signup, login }) {
+  return (
+    <div className="home">
+      {user.username ? (
+        <h2>welcome, {user.username}</h2>
+      ) : (
+        <>
+          <SignupForm signup={signup} />
+          <LoginForm login={login} />
+        </>
+      )}
+    </div>
+  );
 }
