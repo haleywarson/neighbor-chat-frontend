@@ -116,9 +116,9 @@ function App() {
             </Route>
           </Switch>
         </main>
-        <footer className="footer">
+        {/* <footer className="footer">
           <p>Footer</p>
-        </footer>
+        </footer> */}
       </Router>
     </div>
   );

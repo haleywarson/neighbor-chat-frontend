@@ -9,56 +9,44 @@ export default function Chat({ user }) {
 
   useEffect(() => {
     socket.on("connect", (message) => {
-      // This event is fired by the Socket instance upon connection and reconnection.
-      console.log(socket.id);
       console.log("socket connected?", socket.connected);
       console.log("message", message);
-      // setMessages([...messages, message]);
-
-      // you shouldn’t register event handlers in the connect handler itself, as a new handler will be registered every time the Socket reconnects:
+    });
+    socket.on("disconnect", () => {
+      console.log("disconnected if false:", socket.connected);
     });
   }, []);
 
-  //   socket.on("disconnect", () => {
-  //     console.log(socket.id);
-  //     console.log("disconnected if false:", socket.connected);
-  //   });
+  const scrollMessageList = () => {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitting");
     setMessages([...messages, message]);
     socket.emit("chat message", message);
+    scrollMessageList();
   };
-
-  // const scrollMessageList = () => {
-  //   //  window.scrollTo(0, document.body.scrollHeight);
-  // };
-
-  // const displayMessages = (msg) => {
-  //   socket.on("chat message", function (msg)
-  //   const item = <li>input.value</li>
-  //   messages.appendChild(item);
-  //   scrollMessageList()
-  // //   map through messages and display each one
-  // }
-  console.log("chat");
 
   return (
     <div className="chat">
-      <ul id="messages">
+      {/* CHAT FEED */}
+      <ul id="messages-list">
         {messages.map((message) => (
-          <Message key={message.id} message={message} user={user} />
+          <li>
+            <Message key={message.id} message={message} user={user} />
+          </li>
         ))}
       </ul>
-      <form id="form" action="" onSubmit={handleSubmit}>
+      {/* CHAT FORM */}
+      <form id="chat-form" action="" onSubmit={handleSubmit}>
         <input
-          id="input"
+          id="chat-input"
           autocomplete="off"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
-        <input type="submit" />
+        <input id="chat-button" type="submit" value="Send" />
       </form>
     </div>
   );

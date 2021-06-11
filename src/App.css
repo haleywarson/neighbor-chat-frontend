@@ -7,7 +7,7 @@ light green #7DA37E;
 */
 
 /* || Header & Nav */
-/* #nav-bar {
+#nav-bar {
   background-color: white;
   box-shadow: 2px 3px 15px rgba(226, 180, 180, 0.2);
 }
@@ -30,10 +30,10 @@ light green #7DA37E;
 
 #nav-link:hover {
   opacity: 0.9;
-} */
+}
 
 /* || Login/Signup */
-/* 
+
 .login-form,
 .signup-form {
   padding: 0.5em;
@@ -45,7 +45,7 @@ light green #7DA37E;
   width: 90%;
   font-family: "Lato", sans-serif;
   background-color: white;
-  color: white;
+  color: #375058;
   box-shadow: 2px 3px 15px rgba(226, 180, 180, 0.2);
 }
 
@@ -66,25 +66,79 @@ light green #7DA37E;
   font-family: "Playfair Display", serif;
 }
 
-.main-container {
+*/
+
+/* || Pages */
+
+.home, .chat {
+  height: 87vh;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 87vh;
-}
-
-.main-container p {
   font-family: "Lato", sans-serif;
-  color: white;
+  color: #375058;
   font-size: 4rem;
 }
 
-/* || Pages */
+/* CHAT PAGE */
 
-.home {
-  height: 87vh;
+#chat-form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+#chat-input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  color: #375058;
+}
+
+#chat-input:focus {
+  outline: none;
+}
+
+#chat-button {
+  background: #c95254;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: white;
+}
+
+#messages-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #375058;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+}
+
+#messages-list > li {
+  padding: 0.5rem 1rem;
+  background-color: #7da37e31;
+}
+
+#messages-list > li:nth-child(odd) {
+  background-color: white;
 }
 
 /* || Footer */
@@ -105,49 +159,3 @@ footer p {
   font-size: 0.9rem;
   font-family: "Lato", sans-serif;
 }
-
-/* CHAT PAGE */
-/* 
-#form {
-  background: rgba(0, 0, 0, 0.15);
-  padding: 0.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-}
-#input {
-  border: none;
-  padding: 0 1rem;
-  flex-grow: 1;
-  border-radius: 2rem;
-  margin: 0.25rem;
-}
-#input:focus {
-  outline: none;
-}
-#form > button {
-  background: #333;
-  border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
-}
-
-#messages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-#messages > li {
-  padding: 0.5rem 1rem;
-}
-#messages > li:nth-child(odd) {
-  background: #efefef;
-} */
