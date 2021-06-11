@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 
 import Home from "./Pages/Home";
 import Chat from "./Pages/Chat";
@@ -96,12 +96,19 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar expand="lg" sticky="top" id="nav-bar">
+        <Navbar expand="lg" bg="dark" variant="dark" sticky="top" id="nav-bar">
           <Navbar.Brand id="logo" href="/">
+            <img
+              alt=""
+              src="#"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{" "}
             Neighbor Chat
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link id="nav-link" href="/profile">
                 Profile
