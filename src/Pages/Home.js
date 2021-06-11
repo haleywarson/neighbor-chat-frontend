@@ -4,17 +4,12 @@ import "../App.css";
 import LoginForm from "../Components/LoginForm";
 import SignupForm from "../Components/SignupForm";
 
-export default function Home() {
+export default function Home({ signup, user, login, error }) {
   return (
     <div className="home">
-      <h2>welcome, NAME</h2>
-
-      <SignupForm
-      // signup={signup}
-      />
-      <LoginForm
-      // login={login}
-      />
+      {user.username ? <h2>welcome, {user.username}</h2> : null}
+      <SignupForm signup={signup} />
+      <LoginForm login={login} error={error} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export default function SignUpForm({ signUp }) {
+export default function SignUpForm({ signup }) {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -17,8 +17,7 @@ export default function SignUpForm({ signUp }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitting sign up...");
-    signUp(user);
+    signup(user);
   };
 
   return (

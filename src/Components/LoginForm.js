@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export default function LogInForm({ login }) {
+export default function LogInForm({ login, error }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (event) => setUsername(event.target.value);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitting login...");
     login(username, password);
   };
 
@@ -23,7 +20,7 @@ export default function LogInForm({ login }) {
           type="text"
           placeholder="Enter username"
           value={username}
-          onChange={handleUsernameChange}
+          onChange={(event) => setUsername(event.target.value)}
         />
       </Form.Group>
 

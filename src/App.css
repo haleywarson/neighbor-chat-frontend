@@ -7,7 +7,7 @@ light green #7DA37E;
 */
 
 /* || Header & Nav */
-#nav-bar {
+/* #nav-bar {
   background-color: white;
   box-shadow: 2px 3px 15px rgba(226, 180, 180, 0.2);
 }
@@ -30,10 +30,10 @@ light green #7DA37E;
 
 #nav-link:hover {
   opacity: 0.9;
-}
+} */
 
 /* || Login/Signup */
-
+/* 
 .login-form,
 .signup-form {
   padding: 0.5em;
@@ -107,7 +107,7 @@ footer p {
 }
 
 /* CHAT PAGE */
-
+/* 
 #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
@@ -150,4 +150,4 @@ footer p {
 }
 #messages > li:nth-child(odd) {
   background: #efefef;
-}
+} */

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
-import { io } from "socket.io-client";
 
 import Home from "./Pages/Home";
 import Chat from "./Pages/Chat";
@@ -27,7 +26,7 @@ function App() {
       body: JSON.stringify({
         user: {
           username: user.username,
-          // password: user.password,
+          password: user.password,
         },
       }),
     })
@@ -100,11 +99,7 @@ function App() {
               <Nav.Link id="nav-link" href="/profile">
                 Profile
               </Nav.Link>
-              <Nav.Link
-                id="nav-link"
-                href="/"
-                // onClick={logout}
-              >
+              <Nav.Link id="nav-link" href="/" onClick={logout}>
                 Logout
               </Nav.Link>
             </Nav>
@@ -113,17 +108,11 @@ function App() {
 
         <main>
           <Switch>
-            {/* <Route path="/profile">{user.username ? <Profile /> : null}</Route> */}
             <Route path="/chat">
               <Chat user={user} />
             </Route>
             <Route path="/">
-              <h2>Users</h2>
-              <Home
-              // user={user}
-              // signup={signup}
-              // login={login}
-              />
+              <Home user={user} signup={signup} login={login} error={error} />
             </Route>
           </Switch>
         </main>
