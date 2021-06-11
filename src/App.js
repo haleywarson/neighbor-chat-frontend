@@ -15,6 +15,8 @@ function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
 
+  const [loginToggle, setLoginToggle] = useState(false);
+
   // SIGNUP AND LOGIN/OUT
   const signup = (user) => {
     fetch(baseUrl + "users", {
@@ -44,7 +46,7 @@ function App() {
       body: JSON.stringify({
         user: {
           username,
-          // password,
+          password,
         },
       }),
     })
@@ -86,6 +88,11 @@ function App() {
     validateUser();
   }, []);
 
+  // EVENT HANDLERS
+  const displayLogin = () => {
+    setLoginToggle(true);
+  };
+
   return (
     <div className="App">
       <Router>
@@ -112,13 +119,17 @@ function App() {
               <Chat user={user} />
             </Route>
             <Route path="/">
-              <Home user={user} signup={signup} login={login} error={error} />
+              <Home
+                user={user}
+                signup={signup}
+                loginToggle={loginToggle}
+                login={login}
+                error={error}
+                displayLogin={displayLogin}
+              />
             </Route>
           </Switch>
         </main>
-        {/* <footer className="footer">
-          <p>Footer</p>
-        </footer> */}
       </Router>
     </div>
   );

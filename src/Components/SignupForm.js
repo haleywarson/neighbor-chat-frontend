@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export default function SignUpForm({ signup }) {
+export default function SignUpForm({ signup, displayLogin }) {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -48,6 +48,10 @@ export default function SignUpForm({ signup }) {
       <Button variant="dark" type="submit">
         Sign Up
       </Button>
+      <p id="sign-up-text">
+        Already have an account?{" "}
+        <span onClick={() => displayLogin()}>Log in.</span>
+      </p>
     </Form>
   );
 }
