@@ -12,7 +12,8 @@
 
 ## General Info
 
-Neighbor Chat is a chat platform for sharing, helping, and connecting with neighbors on your block.
+Neighbor Chat is a chat platform for sharing, helping, and connecting with neighbors on your block. Updated repo is over [here](https://github.com/haleywarson/neighbor-chat-frontend-final).
+
 The back end repo for this project can be found [here](https://github.com/haleywarson/neighbor-chat-backend).
 
 ## Status
